@@ -48,7 +48,7 @@ const Uploader: React.FC = () => {
                 onPreview={handlePreview}
                 onChange={handleChange}
             >
-                {fileList.length >= 8 ? null : UploadButton}
+                {fileList.length >= 10 ? null : UploadButton}
             </Upload>
             <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
                 <img alt="example" style={{ width: '100%' }} src={previewImage} />
