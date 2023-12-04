@@ -1,15 +1,27 @@
 import Uploader from "../../components/uploader/uploader";
-import { Typography } from "antd";
+import { Typography, Input, Button } from "antd";
+import { RegisterHeading, RegisterLabel, RegisterWrapper, RegisterInput, RegisterButton } from "./register.style";
+
 const Register = () => {
     return (
-        <div className="container">
+        <RegisterWrapper>
+            <RegisterHeading>
+                Register your face
+            </RegisterHeading>
             <div>
-                <Typography.Title style={{ fontSize: 18, padding: "10px 0px" }}>
+                <RegisterLabel>
                     Upload Images <span>( Max 10 )</span>
-                </Typography.Title>
+                </RegisterLabel>
                 <Uploader />
             </div>
-        </div>
+            <div>
+                <RegisterLabel>
+                    Name
+                </RegisterLabel>
+                <RegisterInput placeholder="Muhammad Zain" />
+                <RegisterButton type="primary">Register</RegisterButton>
+            </div>
+        </RegisterWrapper>
     )
 }
 
