@@ -13,12 +13,15 @@ const getBase64 = (file: RcFile): Promise<string> => {
     });
 }
 
-const Uploader: React.FC = () => {
+type ComponentProps = {
+    fileList: UploadFile[];
+    setFileList: React.Dispatch<React.SetStateAction<UploadFile[]>>
+}
+const Uploader: React.FC<ComponentProps> = ({fileList, setFileList}) => {
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
     const [previewTitle, setPreviewTitle] = useState('');
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
-
+   
     const handleCancel = () => setPreviewOpen(false);
 
     const handlePreview = async (file: UploadFile) => {
@@ -30,8 +33,9 @@ const Uploader: React.FC = () => {
         setPreviewTitle(file.name || file.url!.substring(file.url!.lastIndexOf('/') + 1));
     };
 
-    const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) =>
+    const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) => {
         setFileList(newFileList);
+    }
 
     const UploadButton = (
         <div>
