@@ -14,10 +14,12 @@ export const RegisterHeading = styled(Typography.Title)`
 export const RegisterLabel = styled(Typography.Title)`
     font-size: 18px !important;
     padding: 10px 0px !important;
-    span{
+    display: flex;
+    justify-content: space-between;
+    .text{
         color: grey;
         font-size: 14px !important;
-        font-weight: 300 !important;
+        font-weight: 300;
     }
 `
 export const RegisterInput = styled(Input)`
