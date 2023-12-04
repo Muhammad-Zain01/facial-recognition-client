@@ -1,17 +1,14 @@
 import React from "react"
-import UIBox from './components/ui-box/ui-box'
-
-function App() : JSX.Element {
+import { Routes, Route } from "react-router-dom"
+import Home from "./pages/home/home"
+import Register from "./pages/register/register"
+function App(): JSX.Element {
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', height: '700px' }}>
-        <UIBox>
-          Register Face
-        </UIBox>
-        <UIBox>
-          Check Face
-        </UIBox>
-      </div>
+      <Routes>
+        <Route path='/register' element={<Register />} />
+        <Route path='/' element={<Home />} />
+      </Routes>
     </>
   )
 }
