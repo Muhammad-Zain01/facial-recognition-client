@@ -1,11 +1,16 @@
 import React from "react"
+import UIBox from './components/ui-box/ui-box'
 
-function App() {
+function App() : JSX.Element {
   return (
     <>
-      <div style={{display: 'flex'}}>
-        <div style={{width: '40%'}}>Register Face</div>
-        <div style={{width: '40%'}}>Check Face</div>
+      <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', height: '700px' }}>
+        <UIBox>
+          Register Face
+        </UIBox>
+        <UIBox>
+          Check Face
+        </UIBox>
       </div>
     </>
   )
