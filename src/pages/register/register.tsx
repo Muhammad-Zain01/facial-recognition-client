@@ -1,14 +1,18 @@
-import { UploadFile } from "antd";
+import { UploadFile, Button } from "antd";
 import { RegisterHeading, RegisterLabel, RegisterWrapper, RegisterInput, RegisterButton } from "./register.style";
 import { useRef, useState } from "react";
 import { useWebcamContext } from "../../hooks/useWebcam";
 import UploadImages from "./upload-images";
 import CamModal from "./cam-modal";
+import { ArrowLeftOutlined } from "@ant-design/icons";
+import { useNavigate } from 'react-router-dom';
+
 const Register = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const NameRef = useRef<any>("");
     const { setWebcamStarted, WebCamRef } = useWebcamContext();
     const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const navigate = useNavigate()
     const captureImage = () => {
         const imageSrc = WebCamRef.getScreenshot();
         const uuid = crypto.randomUUID();
@@ -38,6 +42,7 @@ const Register = () => {
 
     return (
         <RegisterWrapper>
+            <Button icon={<ArrowLeftOutlined />} onClick={() => navigate(-1)}>Back</Button>
             <RegisterHeading>
                 Register your face
             </RegisterHeading>
