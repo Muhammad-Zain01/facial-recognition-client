@@ -31,3 +31,14 @@ export const RegisterButton = styled(Button)`
     margin-top: 20px;
     width: 100%;
 `
+export const SpinWrapper = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+`
+export const ModalContent = styled.div`
+    margin: auto;
+    height: ${props => props.$hg};
+`
