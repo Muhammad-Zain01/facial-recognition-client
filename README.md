@@ -3,21 +3,21 @@
 <img src="https://raw.githubusercontent.com/Muhammad-Zain01/facial-recognition-client/main/public/logo.png" style="width: 320px;" />
 <h3 align="center">Facial Recognition (Client)</h3>
 <div>
-    <a href="https://github.com/muhammad-zain01/url-shortner/graphs/contributors"><img src="https://img.shields.io/github/contributors/muhammad-zain01/url-shortner.svg?style=for-the-badge" /></a>
-    <a href="https://github.com/muhammad-zain01/url-shortner/network/members"><img src="https://img.shields.io/github/forks/muhammad-zain01/url-shortner.svg?style=for-the-badge" /></a>
-    <a href="https://github.com/muhammad-zain01/url-shortner/stargazers"><img src="https://img.shields.io/github/stars/muhammad-zain01/url-shortner.svg?style=for-the-badge" /></a>
-    <a href="https://github.com/muhammad-zain01/url-shortner/issues"><img src="https://img.shields.io/github/issues/muhammad-zain01/url-shortner.svg?style=for-the-badge" /></a>
+    <a href="https://github.com/muhammad-zain01/facial-recognition-client/graphs/contributors"><img src="https://img.shields.io/github/contributors/muhammad-zain01/facial-recognition-client.svg?style=for-the-badge" /></a>
+    <a href="https://github.com/muhammad-zain01/facial-recognition-client/network/members"><img src="https://img.shields.io/github/forks/muhammad-zain01/facial-recognition-client.svg?style=for-the-badge" /></a>
+    <a href="https://github.com/muhammad-zain01/facial-recognition-client/stargazers"><img src="https://img.shields.io/github/stars/muhammad-zain01/facial-recognition-client.svg?style=for-the-badge" /></a>
+    <a href="https://github.com/muhammad-zain01/facial-recognition-client/issues"><img src="https://img.shields.io/github/issues/muhammad-zain01/facial-recognition-client.svg?style=for-the-badge" /></a>
 </div>
 
   <p align="center" style="text-align: justify;">
     A simple and efficient URL shortener that allows you to create shortened versions of long URLs, making them easier to share and manage. This URL shortener (Client) is built with React.js (Vite). It provides a clean and user-friendly interface for both shortening and expanding URLs.
   </p>
-    <a href="https://github.com/muhammad-zain01/url-shortner"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/muhammad-zain01/facial-recognition-client"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://url-shortr.vercel.app/">View Demo</a>
     -
-    <a href="https://github.com/Muhammad-Zain01/url-shortner-backend/">Backend Repo</a>
+    <a href="https://github.com/Muhammad-Zain01/facial-recognition-client/">Backend Repo</a>
     <br />
     <br />
     <br />
@@ -49,11 +49,11 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/muhammad-zain01/url-shortner.git
+   git clone https://github.com/muhammad-zain01/facial-recognition-client.git
    ```
 2. Install NPM packages
    ```sh
-    cd url-shortner
+    cd facial-recognition-client
     npm install
    ```
 3. Creating .env
@@ -83,20 +83,20 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 
-[contributors-shield]: https://img.shields.io/github/contributors/muhammad-zain01/url-shortner.svg?style=for-the-badge
-[contributors-url]: https://github.com/muhammad-zain01/url-shortner/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/muhammad-zain01/url-shortner.svg?style=for-the-badge
-[forks-url]: https://github.com/muhammad-zain01/url-shortner/network/members
-[stars-shield]: https://img.shields.io/github/stars/muhammad-zain01/url-shortner.svg?style=for-the-badge
-[stars-url]: https://github.com/muhammad-zain01/url-shortner/stargazers
-[issues-shield]: https://img.shields.io/github/issues/muhammad-zain01/url-shortner.svg?style=for-the-badge
-[issues-url]: https://github.com/muhammad-zain01/url-shortner/issues
-[license-shield]: https://img.shields.io/github/license/muhammad-zain01/url-shortner.svg?style=for-the-badge
-[license-url]: https://github.com/muhammad-zain01/url-shortner/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/muhammad-zain01/facial-recognition-client.svg?style=for-the-badge
+[contributors-url]: https://github.com/muhammad-zain01/facial-recognition-client/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/muhammad-zain01/facial-recognition-client.svg?style=for-the-badge
+[forks-url]: https://github.com/muhammad-zain01/facial-recognition-client/network/members
+[stars-shield]: https://img.shields.io/github/stars/muhammad-zain01/facial-recognition-client.svg?style=for-the-badge
+[stars-url]: https://github.com/muhammad-zain01/facial-recognition-client/stargazers
+[issues-shield]: https://img.shields.io/github/issues/muhammad-zain01/facial-recognition-client.svg?style=for-the-badge
+[issues-url]: https://github.com/muhammad-zain01/facial-recognition-client/issues
+[license-shield]: https://img.shields.io/github/license/muhammad-zain01/facial-recognition-client.svg?style=for-the-badge
+[license-url]: https://github.com/muhammad-zain01/facial-recognition-client/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: https://raw.githubusercontent.com/Muhammad-Zain01/url-shortner/main/preview.png
-[product-screenshot2]: https://raw.githubusercontent.com/Muhammad-Zain01/url-shortner/main/preview2.png
+[product-screenshot]: https://raw.githubusercontent.com/Muhammad-Zain01/facial-recognition-client/main/preview.png
+[product-screenshot2]: https://raw.githubusercontent.com/Muhammad-Zain01/facial-recognition-client/main/preview2.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 
 [Express.js]: https://img.shields.io/badge/express.js-f1dd1c?style=for-the-badge
