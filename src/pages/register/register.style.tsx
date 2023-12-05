@@ -3,12 +3,14 @@ import { Typography, Button, Input } from "antd";
 export const RegisterWrapper = styled.div`
     width: 40%;
     margin: auto;
+    padding-top: 20px;
 `
 
 export const RegisterHeading = styled(Typography.Title)`
     font-size: 40px !important;
     font-weight: 700 !important;
     padding: 10px 0px;
+    margin-top: 5px;
 `
 
 export const RegisterLabel = styled(Typography.Title)`
