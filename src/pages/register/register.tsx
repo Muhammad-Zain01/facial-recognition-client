@@ -7,22 +7,36 @@ import { CameraOutlined } from "@ant-design/icons";
 import { useWebcamContext } from "../../hooks/useWebcam";
 const Register = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const { setWebcamStarted, isDetected } = useWebcamContext();
+    const NameRef = useRef<any>("");
+    const { setWebcamStarted, isDetected, WebCamRef } = useWebcamContext();
 
-    const [fileList, setFileList] = useState<UploadFile[]>([
-        {
-            uid: '-2',
-            name: 'image.png',
-            status: 'done',
-            url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        }
-    ]);
+    const [fileList, setFileList] = useState<UploadFile[]>([]);
     const captureImage = () => {
-
+        const imageSrc = WebCamRef.getScreenshot();
+        const uuid = crypto.randomUUID();
+        setFileList([
+            ...fileList,
+            {
+                uid: uuid,
+                name: uuid + '.png',
+                status: 'done',
+                url: imageSrc,
+            }
+        ])
+        handleModalClose();
     }
     const handleModalOpen = () => {
         setWebcamStarted(true);
         setIsModalOpen(true);
+    }
+    const handleModalClose = () => {
+        setWebcamStarted(false)
+        setIsModalOpen(false)
+    }
+    const onRegister = () => {
+        const Name = NameRef.current.input.value;
+        console.log(Name);
+
     }
     return (
         <RegisterWrapper>
@@ -33,7 +47,7 @@ const Register = () => {
             <div>
                 <RegisterLabel>
                     <div>Upload Images <span className="text">( Max 10 )</span></div>
-                    <div ><Button icon={<CameraOutlined />} onClick={handleModalOpen}>Capture</Button></div>
+                    <div ><Button icon={<CameraOutlined />} onClick={handleModalOpen} disabled={fileList.length >= 10}>Capture</Button></div>
                 </RegisterLabel>
                 <Uploader fileList={fileList} setFileList={setFileList} />
             </div>
@@ -41,20 +55,15 @@ const Register = () => {
                 <RegisterLabel>
                     Name
                 </RegisterLabel>
-                <RegisterInput placeholder="Muhammad Zain" />
-                <RegisterButton type="primary">Register</RegisterButton>
+                <RegisterInput placeholder="Muhammad Zain" ref={NameRef} />
+                <RegisterButton type="primary" onClick={onRegister}>Register</RegisterButton>
             </div>
-
-
             <Modal
                 title="Add Image"
                 open={isModalOpen}
                 centered
                 width={690}
-                onCancel={() => {
-                    setWebcamStarted(false)
-                    setIsModalOpen(false)
-                }}
+                onCancel={handleModalClose}
                 footer={
                     <div>
                         <Button type="primary" disabled={!isDetected} onClick={captureImage}>Capture</Button>
@@ -62,7 +71,7 @@ const Register = () => {
                 }
             >
                 <div style={{ height: 500, margin: 'auto' }}>
-                    <FaceCam key={IsWeb} />
+                    <FaceCam />
                 </div>
             </Modal>
         </RegisterWrapper>
