@@ -1,9 +1,14 @@
-import { createContext, useReducer, useRef } from "react";
+import { createContext, useReducer } from "react";
 
+type Resolution = {
+    width: number,
+    height: number
+}
 type ContextState = {
     isDetected: Boolean;
     WebcamStarted: Boolean;
     WebCamRef: any;
+    resolution: Resolution;
     setIsDetected?: (value: Boolean) => void
     setWebcamStarted?: (value: Boolean) => void
     setWebCamRef?: (value: any) => void
@@ -11,13 +16,19 @@ type ContextState = {
 const initialState: ContextState = {
     isDetected: false,
     WebcamStarted: false,
-    WebCamRef: false
+    WebCamRef: false,
+    resolution: {
+        width: 640,
+        height: 480,
+    }
 }
+
 const defaultValues: ContextState = {
     ...initialState,
     setIsDetected: (value: Boolean) => { },
     setWebcamStarted: (value: Boolean) => { },
     setWebCamRef: (value: any) => { },
+    setResolution: (value: Resolution) => { }
 }
 export const WebCamContext = createContext(defaultValues);
 const WebcamReducer = (state, action) => {
@@ -37,6 +48,11 @@ const WebcamReducer = (state, action) => {
                 ...state,
                 WebCamRef: action.payload
             }
+        case "SET_RESOLUTION":
+            return {
+                ...state,
+                resolution: action.payload
+            }
     }
 }
 type Props = {
@@ -47,7 +63,8 @@ export const WebcamProvider: React.FC<Props> = ({ children }) => {
     const setIsDetected = (value: Boolean): void => dispatch({ type: "SET_DETECTED", payload: value })
     const setWebcamStarted = (value: Boolean): void => dispatch({ type: "SET_WEBCAM", payload: value })
     const setWebCamRef = (ref: any): void => dispatch({ type: "SET_WEBCAM_REF", payload: ref })
-    const value = { ...state, setIsDetected, setWebcamStarted, setWebCamRef }
+    const setResolution = (value: Resolution): void => dispatch({ type: "SET_RESOLUTION", payload: value })
+    const value = { ...state, setIsDetected, setWebcamStarted, setWebCamRef, setResolution }
     return (
         <WebCamContext.Provider value={value}>
             {children}
