@@ -1,7 +1,7 @@
 <br />
 <div align="center">
-<img src="https://raw.githubusercontent.com/Muhammad-Zain01/url-shortner/main/public/logo.png" style="width: 320px;" />
-<h3 align="center">URL Shortner (Client)</h3>
+<img src="https://raw.githubusercontent.com/Muhammad-Zain01/facial-recognition-client/main/public/logo.png" style="width: 320px;" />
+<h3 align="center">Facial Recognition (Client)</h3>
 <div>
     <a href="https://github.com/muhammad-zain01/url-shortner/graphs/contributors"><img src="https://img.shields.io/github/contributors/muhammad-zain01/url-shortner.svg?style=for-the-badge" /></a>
     <a href="https://github.com/muhammad-zain01/url-shortner/network/members"><img src="https://img.shields.io/github/forks/muhammad-zain01/url-shortner.svg?style=for-the-badge" /></a>
@@ -26,12 +26,6 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://url-shortr.vercel.app/)
 [![Product Name Screen Shot][product-screenshot2]](https://url-shortr.vercel.app/)
-
-### Credentials for Testing
-
-| Username | Password     |
-|----------|--------------|
-| test    | test123  |
 
 
 ### Built With
