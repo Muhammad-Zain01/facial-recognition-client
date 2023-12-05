@@ -1,6 +1,6 @@
 <br />
 <div align="center">
-<img src="https://raw.githubusercontent.com/Muhammad-Zain01/facial-recognition-client/main/public/logo.png" style="width: 320px;" />
+<img src="https://raw.githubusercontent.com/Muhammad-Zain01/facial-recognition-client/main/public/logo.png" style="width: 250px;" />
 <h3 align="center">Facial Recognition (Client)</h3>
 <div>
     <a href="https://github.com/muhammad-zain01/facial-recognition-client/graphs/contributors"><img src="https://img.shields.io/github/contributors/muhammad-zain01/facial-recognition-client.svg?style=for-the-badge" /></a>
