@@ -36,7 +36,6 @@ const FaceCam: React.FC = () => {
     }, 100);
   };
 
-
   const stopFaceDetection = () => {
     if (intervalId.current) {
       clearInterval(intervalId.current);
