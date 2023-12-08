@@ -6,9 +6,12 @@ import UploadImages from "./upload-images";
 import CamModal from "./cam-modal";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useNavigate } from 'react-router-dom';
+import RegisterModal from "./register-modal";
 
 const Register = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [registerModal, setRegisterModal] = useState(false);
+    const [registerState, setRegisterState] = useState(0)
     const NameRef = useRef<any>("");
     const { setWebcamStarted, WebCamRef } = useWebcamContext();
     const [fileList, setFileList] = useState<UploadFile[]>([]);
@@ -36,8 +39,13 @@ const Register = () => {
         setIsModalOpen(false)
     }
     const onRegister = () => {
-        const Name = NameRef.current.input.value;
-        console.log(Name);
+        setRegisterModal(true)
+        setRegisterState(0)
+        const name = NameRef.current.input.value;
+        const id = crypto.randomUUID();
+        fileList.map(item => {
+            console.log(item)
+        })
     }
 
     return (
@@ -55,6 +63,7 @@ const Register = () => {
                 <RegisterButton type="primary" onClick={onRegister}>Register</RegisterButton>
             </div>
             <CamModal isModalOpen={isModalOpen} handleModalClose={handleModalClose} captureImage={captureImage} />
+            <RegisterModal modalOpen={registerModal} setModalOpen={setRegisterModal} state={registerState} />
         </RegisterWrapper>
     )
 }
