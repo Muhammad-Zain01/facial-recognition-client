@@ -7,6 +7,7 @@ import CamModal from "./cam-modal";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useNavigate } from 'react-router-dom';
 import RegisterModal from "./register-modal";
+import { Upload } from '../../API/request'
 
 const Register = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,7 +45,8 @@ const Register = () => {
         const name = NameRef.current.input.value;
         const id = crypto.randomUUID();
         fileList.map(item => {
-            console.log(item)
+            const image = item?.url
+            // Upload()
         })
     }
 
