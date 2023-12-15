@@ -1,18 +1,18 @@
-import { UploadFile, Button } from "antd";
+import { UploadFile, Button, message } from "antd";
 import { RegisterHeading, RegisterLabel, RegisterWrapper, RegisterInput, RegisterButton } from "./register.style";
 import { useRef, useState } from "react";
 import { useWebcamContext } from "../../hooks/useWebcam";
-import UploadImages from "./upload-images";
 import CamModal from "./cam-modal";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useNavigate } from 'react-router-dom';
+import UploadImages from "./upload-images";
 import RegisterModal from "./register-modal";
-import { Upload } from '../../API/request'
-
+import { UploadImage } from '../../API/request'
 const Register = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [registerModal, setRegisterModal] = useState(false);
     const [registerState, setRegisterState] = useState(0)
+    const [percent, setPercent] = useState(0)
     const NameRef = useRef<any>("");
     const { setWebcamStarted, WebCamRef } = useWebcamContext();
     const [fileList, setFileList] = useState<UploadFile[]>([]);
@@ -40,14 +40,25 @@ const Register = () => {
         setIsModalOpen(false)
     }
     const onRegister = () => {
-        setRegisterModal(true)
-        setRegisterState(0)
         const name = NameRef.current.input.value;
+        if (name == '') {
+            return message.error('Please enter your name');
+        }
+
+        setRegisterModal(true)
         const id = crypto.randomUUID();
-        fileList.map(item => {
-            const image = item?.url
-            // Upload()
+        const length = fileList.length
+        fileList.map(async (item, index) => {
+            const img = item?.url
+            const response = await UploadImage({ id, name, img })
+            if (response.Status) {
+                setPercent(Math.round(((index + 1) / length) * 100))
+            }
+            await new Promise((resolve) => setTimeout(resolve, 1000))
         })
+        if(percent == 100){
+            console.log("UPLOADID")
+        }
     }
 
     return (
@@ -65,7 +76,7 @@ const Register = () => {
                 <RegisterButton type="primary" onClick={onRegister}>Register</RegisterButton>
             </div>
             <CamModal isModalOpen={isModalOpen} handleModalClose={handleModalClose} captureImage={captureImage} />
-            <RegisterModal modalOpen={registerModal} setModalOpen={setRegisterModal} state={registerState} />
+            <RegisterModal modalOpen={registerModal} setModalOpen={setRegisterModal} state={registerState} percent={percent} />
         </RegisterWrapper>
     )
 }

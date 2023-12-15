@@ -14,9 +14,8 @@ const UploadImages: React.FC<ComponentProps> = ({ fileList, handleModalOpen, set
         <div>
             <RegisterLabel>
                 <div>Upload Images <span className="text">( Max 10 )</span></div>
-                <div ><Button icon={<CameraOutlined />} onClick={handleModalOpen} disabled={fileList.length >= 10}>Capture</Button></div>
             </RegisterLabel>
-            <Uploader fileList={fileList} setFileList={setFileList} />
+            <Uploader fileList={fileList} captureModal={handleModalOpen} setFileList={setFileList} />
         </div>
     )
 }

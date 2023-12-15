@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
+import { CameraFilled, CameraOutlined, PlusOutlined } from '@ant-design/icons';
 import { Modal, Upload } from 'antd';
 import type { RcFile, UploadProps } from 'antd/es/upload';
 import type { UploadFile } from 'antd/es/upload/interface';
+import { ButtonWrapper } from './uploader.style';
 
 const getBase64 = (file: RcFile): Promise<string> => {
     return new Promise((resolve, reject) => {
@@ -15,13 +16,15 @@ const getBase64 = (file: RcFile): Promise<string> => {
 
 type ComponentProps = {
     fileList: UploadFile[];
-    setFileList: React.Dispatch<React.SetStateAction<UploadFile[]>>
+    setFileList: React.Dispatch<React.SetStateAction<UploadFile[]>>;
+    captureModal: () => void;
+
 }
-const Uploader: React.FC<ComponentProps> = ({fileList, setFileList}) => {
+const Uploader: React.FC<ComponentProps> = ({ fileList, captureModal, setFileList }) => {
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
     const [previewTitle, setPreviewTitle] = useState('');
-   
+
     const handleCancel = () => setPreviewOpen(false);
 
     const handlePreview = async (file: UploadFile) => {
@@ -37,12 +40,6 @@ const Uploader: React.FC<ComponentProps> = ({fileList, setFileList}) => {
         setFileList(newFileList);
     }
 
-    const UploadButton = (
-        <div>
-            <PlusOutlined />
-            <div style={{ marginTop: 8 }}>Upload</div>
-        </div>
-    );
     return (
         <>
             <Upload
@@ -51,8 +48,14 @@ const Uploader: React.FC<ComponentProps> = ({fileList, setFileList}) => {
                 fileList={fileList}
                 onPreview={handlePreview}
                 onChange={handleChange}
+                openFileDialogOnClick={false}
             >
-                {fileList.length >= 10 ? null : UploadButton}
+                {fileList.length >= 10 ? null : (
+                    <ButtonWrapper onClick={captureModal}>
+                        <CameraOutlined  />
+                        <div style={{ marginTop: 8 }}>Capture</div>
+                    </ButtonWrapper>
+                )}
             </Upload>
             <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
                 <img alt="example" style={{ width: '100%' }} src={previewImage} />

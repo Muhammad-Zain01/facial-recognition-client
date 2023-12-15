@@ -5,11 +5,13 @@ type ComponentProps = {
     modalOpen: boolean;
     setModalOpen: (value: boolean) => void;
     state: number;
+    percent: number;
 }
-const RegisterModal: React.FC<ComponentProps> = ({ modalOpen, setModalOpen, state }) => {
+const RegisterModal: React.FC<ComponentProps> = ({ modalOpen, setModalOpen, state, percent }) => {
     const onStop = () => {
         console.log("STOP")
     }
+    console.log(percent);
     return (
         <div>
             <Modal
@@ -21,13 +23,13 @@ const RegisterModal: React.FC<ComponentProps> = ({ modalOpen, setModalOpen, stat
                 footer={
                     <div>
                         {
-                            state === 0 && (
+                            percent < 100 && (
                                 <Button danger onClick={onStop}>Stop</Button>
                             )
                         }
                         {
-                            state === 2 && (
-                                <Button onClick={() => setModalOpen(false)}>Close</Button>
+                            percent == 100 && (
+                                <Button onClick={() => setModalOpen(false)}>Stop</Button>
                             )
                         }
                     </div>
@@ -37,16 +39,16 @@ const RegisterModal: React.FC<ComponentProps> = ({ modalOpen, setModalOpen, stat
 
                     <div style={{ display: 'flex', padding: '30px 10px 5px 10px', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                         {
-                            state == 0 && (
+                            percent < 100 && (
                                 <>
                                     <Spin size="large" />
                                     <p>Uploading...</p>
-                                    <Progress percent={0} />
+                                    <Progress percent={percent} />
                                 </>
                             )
                         }
                         {
-                            state == 1 && (
+                            percent == 100 && (
                                 <>
                                     <Spin size="large" />
                                     <p>Registering...</p>
