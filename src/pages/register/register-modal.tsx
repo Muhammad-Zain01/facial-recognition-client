@@ -21,25 +21,20 @@ const RegisterModal: React.FC<ComponentProps> = ({ modalOpen, setModalOpen, stat
                 onCancel={() => setModalOpen(false)}
                 maskClosable={false}
                 footer={
-                    <div>
+                    <>
                         {
-                            percent < 100 && (
-                                <Button danger onClick={onStop}>Stop</Button>
+                            state === 3 && (
+                                <Button onClick={() => setModalOpen(false)}>close</Button>
                             )
                         }
-                        {
-                            percent == 100 && (
-                                <Button onClick={() => setModalOpen(false)}>Stop</Button>
-                            )
-                        }
-                    </div>
+                    </>
                 }
             >
                 <div>
 
                     <div style={{ display: 'flex', padding: '30px 10px 5px 10px', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                         {
-                            percent < 100 && (
+                            state == 0 && (
                                 <>
                                     <Spin size="large" />
                                     <p>Uploading...</p>
@@ -48,10 +43,18 @@ const RegisterModal: React.FC<ComponentProps> = ({ modalOpen, setModalOpen, stat
                             )
                         }
                         {
-                            percent == 100 && (
+                            state == 1 && (
                                 <>
-                                    <Spin size="large" />
-                                    <p>Registering...</p>
+                                    <Result
+                                        style={{ margin: 0, padding: 0 }}
+                                        status="success"
+                                        title="Uploaded Successfully"
+                                        extra={
+                                            <Button type="primary">
+                                                Register
+                                            </Button>
+                                        }
+                                    />
                                 </>
                             )
                         }
@@ -59,6 +62,18 @@ const RegisterModal: React.FC<ComponentProps> = ({ modalOpen, setModalOpen, stat
                             state == 2 && (
                                 <>
                                     <Result
+                                        style={{ margin: 0, padding: 0 }}
+                                        status="warning"
+                                        title="Something Went Wrong"
+                                    />
+                                </>
+                            )
+                        }
+                        {
+                            state == 3 && (
+                                <>
+                                    <Result
+                                        style={{ margin: 0, padding: 0 }}
                                         status="success"
                                         title="Registered successfully"
                                     />
