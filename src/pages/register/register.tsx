@@ -10,8 +10,8 @@ import RegisterModal from "./register-modal";
 import { UploadImage } from '../../API/request'
 const Register = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [registerModal, setRegisterModal] = useState(false);
-    const [registerState, setRegisterState] = useState(0)
+    const [registerModal, setRegisterModal] = useState(true);
+    const [registerState, setRegisterState] = useState(3)
     const [percent, setPercent] = useState(0)
     const NameRef = useRef<any>("");
     const { setWebcamStarted, WebCamRef } = useWebcamContext();
@@ -51,14 +51,17 @@ const Register = () => {
         fileList.map(async (item, index) => {
             const img = item?.url
             const response = await UploadImage({ id, name, img })
-            if (response.Status) {
+            if (response?.Status) {
                 setPercent(Math.round(((index + 1) / length) * 100))
+            } else {
+                message.error('Error Uploading')
+                setRegisterState(2);
             }
-            await new Promise((resolve) => setTimeout(resolve, 1000))
+            if (percent == 100) {
+                setRegisterState(1);
+            }
         })
-        if(percent == 100){
-            console.log("UPLOADID")
-        }
+
     }
 
     return (
