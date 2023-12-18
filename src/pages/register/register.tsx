@@ -60,9 +60,9 @@ const Register = () => {
         fileList.map(async (item, index) => {
             const img = item?.url
             const response = await UploadImage({ id: name, name, img })
-            if (response?.Status) {
+            if (response?.Status === 1) {
                 setPercent(Math.round(((index + 1) / length) * 100))
-            } else {
+            } else if (response?.Status === 0) {
                 message.error('Error Uploading')
                 setRegisterState(2);
             }
@@ -82,6 +82,7 @@ const Register = () => {
         if (percent == 100) {
             setRegisterState(1);
         }
+        console.log(percent);
     }, [percent])
     return (
         <RegisterWrapper>
