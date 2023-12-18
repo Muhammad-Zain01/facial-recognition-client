@@ -13,6 +13,16 @@ export const UIBoxWrapper = styled.div`
     &:hover{
         border-color: #68686889;
     }
+    @media only screen and (max-width: 1200px) {
+        width: 40%;
+    }
+    @media only screen and (max-width: 900px) {
+        width: 44%;
+    }
+    @media only screen and (max-width: 805px) {
+        width: 80%;
+        margin-top:20px;
+    }
 `
 export const UIBoxImage = styled.img`
     width: 70%;
