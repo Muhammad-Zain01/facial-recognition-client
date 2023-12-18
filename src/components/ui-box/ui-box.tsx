@@ -14,7 +14,7 @@ const UIBox: React.FC<ComponentProps> = ({ href, onClick, children }): JSX.Eleme
     }
     return (
         <UIBoxWrapper onClick={handleClick}>
-            <UIBoxImage src="/face.jpg" alt="face" />
+            <UIBoxImage src={`/${href ? 'register.png' : 'check.png'}`} alt="face" />
             <UIBoxChildren>{children}</UIBoxChildren>
         </UIBoxWrapper>
     )
