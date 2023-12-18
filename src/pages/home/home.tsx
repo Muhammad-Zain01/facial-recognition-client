@@ -8,7 +8,7 @@ import { CheckUser } from '../../API/request'
 import ShowName from "../../components/show-name/show-name"
 const Home: React.FC = (): JSX.Element => {
     const [checkModal, setCheckModal] = useState(false);
-    const [name, setName] = useState<string>('');
+    const [name, setName] = useState<string>('No User Detected');
     const [nameModal, setNameModal] = useState<boolean>(false)
     
     const { setWebcamStarted, WebCamRef } = useWebcamContext();
@@ -17,6 +17,8 @@ const Home: React.FC = (): JSX.Element => {
         const response = await CheckUser(image);
         if (response?.Status) {
             setName(response?.user)
+        }else{
+            setName("No User Detected")
         }
     }
     const OpenCheckModal = () => {
