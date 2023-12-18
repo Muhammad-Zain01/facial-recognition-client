@@ -4,6 +4,15 @@ export const RegisterWrapper = styled.div`
     width: 40%;
     margin: auto;
     padding-top: 20px;
+    @media only screen and (max-width: 940px) {
+        width: 70%;
+    }
+    @media only screen and (max-width: 600px) {
+        width: 90%;
+    }
+    @media only screen and (max-width: 400px) {
+        width: 100%;
+    }
 `
 
 export const RegisterHeading = styled(Typography.Title)`
