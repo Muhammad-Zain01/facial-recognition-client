@@ -3,12 +3,14 @@ import { UIBoxWrapper, UIBoxImage, UIBoxChildren } from "./ui-box.style";
 import { useNavigate } from "react-router-dom";
 type ComponentProps = {
     children: React.ReactNode;
-    href: String;
+    href: string | boolean;
+    onClick: () => void | boolean;
 }
-const UIBox: React.FC<ComponentProps> = ({ href, children }): JSX.Element => {
+const UIBox: React.FC<ComponentProps> = ({ href, onClick, children }): JSX.Element => {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate(`/${href}`)
+        if (href) { navigate(`/${href}`) }
+        if (onClick) { onClick() }
     }
     return (
         <UIBoxWrapper onClick={handleClick}>
