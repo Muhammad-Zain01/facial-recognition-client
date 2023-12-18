@@ -1,10 +1,11 @@
+import { GithubButtonWrapper } from "./github-button.style";
 const GithubButton = () => {
     return (
-        <div style={{ position: 'absolute', top: 45, right: 30 }}>
+        <GithubButtonWrapper>
             <div>
                 <iframe src="https://ghbtns.com/github-btn.html?user=Muhammad-Zain01&type=follow&size=large" frameBorder="0"  height="30" title="GitHub"></iframe>
             </div>
-        </div>
+        </GithubButtonWrapper>
     )
 }
 export default GithubButton;
