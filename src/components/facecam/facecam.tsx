@@ -43,15 +43,16 @@ const FaceCam: React.FC = () => {
   };
 
   useEffect(() => {
+    loadModels()
+  }, []);
+  
+  useEffect(() => {
     if (!WebcamStarted) {
       stopFaceDetection();
     } else {
       handleWebcamStream();
     }
   }, [WebcamStarted])
-  useEffect(() => {
-    loadModels()
-  }, []);
 
   return (
     <div style={{ margin: 'auto' }}>
