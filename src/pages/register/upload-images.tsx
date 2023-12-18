@@ -1,7 +1,5 @@
 import { RegisterLabel } from "./register.style";
-import { Button } from "antd";
 import Uploader from "../../components/uploader/uploader";
-import { CameraOutlined } from "@ant-design/icons";
 import type { UploadFile } from 'antd/es/upload/interface';
 
 type ComponentProps = {

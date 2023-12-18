@@ -1,6 +1,6 @@
 import { TRIANGULATION } from "./triangulation";
 
-export const drawMesh = (prediction, ctx) => {
+export const drawMesh = (prediction: any, ctx: any) => {
   if (!prediction) return;
   const keyPoints = prediction.keypoints;
   if (!keyPoints) return;
@@ -21,7 +21,7 @@ export const drawMesh = (prediction, ctx) => {
   }
 };
 
-const drawPath = (ctx, points, closePath) => {
+const drawPath = (ctx: any, points: any, closePath: any) => {
   const region = new Path2D();
   region.moveTo(points[0].x, points[0].y);
   for (let i = 1; i < points.length; i++) {

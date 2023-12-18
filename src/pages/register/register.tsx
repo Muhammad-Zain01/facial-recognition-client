@@ -98,8 +98,18 @@ const Register = () => {
                 <RegisterInput placeholder="Muhammad Zain" ref={NameRef} />
                 <RegisterButton type="primary" onClick={onRegister}>Register</RegisterButton>
             </div>
-            <CamModal isModalOpen={isModalOpen} handleModalClose={handleModalClose} captureImage={captureImage} />
-            <RegisterModal modalOpen={registerModal} reset={Reset} state={registerState} percent={percent} startRegister={startRegister} />
+            <CamModal
+                isModalOpen={isModalOpen}
+                handleModalClose={handleModalClose}
+                captureImage={captureImage}
+            />
+            <RegisterModal
+                modalOpen={registerModal}
+                reset={Reset}
+                state={registerState}
+                percent={percent}
+                startRegister={startRegister}
+            />
         </RegisterWrapper>
     )
 }
