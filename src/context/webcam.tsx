@@ -9,16 +9,23 @@ type ContextState = {
     WebcamStarted: Boolean;
     WebCamRef: any;
     resolution: Resolution;
-    setIsDetected?: (value: Boolean) => void
-    setWebcamStarted?: (value: Boolean) => void
-    setWebCamRef?: (value: any) => void
+}
+type CominedState = {
+    isDetected: Boolean;
+    WebcamStarted: Boolean;
+    WebCamRef: any;
+    resolution: Resolution;
+    setIsDetected: (value: Boolean) => void
+    setWebcamStarted: (value: Boolean) => void
+    setWebCamRef: (value: any) => void;
+    setResolution: (value: Resolution) => void
 }
 
 let byDefaultWidth = 640;
 let byDefaultHeight = 480;
 const width = window && window?.innerWidth;
 if (width < 716) {
-    byDefaultWidth = width - 76 
+    byDefaultWidth = width - 76
 }
 
 const initialState: ContextState = {
@@ -31,16 +38,16 @@ const initialState: ContextState = {
     }
 }
 
-const defaultValues: ContextState = {
+const defaultValues: CominedState = {
     ...initialState,
-    setIsDetected: (value: Boolean) => { },
-    setWebcamStarted: (value: Boolean) => { },
-    setWebCamRef: (value: any) => { },
-    setResolution: (value: Resolution) => { }
+    setIsDetected: () => { },
+    setWebcamStarted: () => { },
+    setWebCamRef: () => { },
+    setResolution: () => { }
 }
 
 export const WebCamContext = createContext(defaultValues);
-const WebcamReducer = (state, action) => {
+const WebcamReducer = (state: any, action: any) => {
     switch (action.type) {
         case "SET_DETECTED":
             return {

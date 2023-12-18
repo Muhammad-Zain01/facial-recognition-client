@@ -25,7 +25,7 @@ const FaceCam: React.FC = () => {
       startFaceDetection(video, videoWidth, videoHeight)
     }
   };
-  const startFaceDetection = (video, videoWidth, videoHeight) => {
+  const startFaceDetection = (video : any, videoWidth : number, videoHeight : number) => {
     intervalId.current = setInterval(async () => {
       const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
       if (detections.length > 0) { setIsDetected(true); }

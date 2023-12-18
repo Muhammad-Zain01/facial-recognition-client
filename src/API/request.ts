@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const UploadImage = async (data) => {
+export const UploadImage = async (data: any) => {
     let url = `${import.meta.env.VITE_SERVER_URL}/upload`;
 
     const body = new FormData();
@@ -16,7 +16,7 @@ export const UploadImage = async (data) => {
         .then((response) => response.data)
         .catch((error) => { console.log(error) });
 }
-export const RegisterUser = async (path_id) => {
+export const RegisterUser = async (path_id: string) => {
     let url = `${import.meta.env.VITE_SERVER_URL}/register`;
 
     const body = new FormData();
@@ -33,7 +33,7 @@ export const RegisterUser = async (path_id) => {
         .catch((error) => { console.log(error) });
 }
 
-export const CheckUser = async (image) => {
+export const CheckUser = async (image: string) => {
     let url = `${import.meta.env.VITE_SERVER_URL}/check`;
 
     const body = new FormData();

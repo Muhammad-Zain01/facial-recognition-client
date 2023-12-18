@@ -36,7 +36,7 @@ const Home: React.FC = (): JSX.Element => {
                 <HomePageHeading>Facial Recognition</HomePageHeading>
             </HomePageHeadingContainer>
             <HomePageBox className="container">
-                <UIBox href="register" onClick={false}>
+                <UIBox href="register" onClick={() => {}}>
                     Register Face
                 </UIBox>
                 <UIBox href={false} onClick={OpenCheckModal}>

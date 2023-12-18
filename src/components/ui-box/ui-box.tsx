@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 type ComponentProps = {
     children: React.ReactNode;
     href: string | boolean;
-    onClick: () => void | boolean;
+    onClick: () => void;
 }
 const UIBox: React.FC<ComponentProps> = ({ href, onClick, children }): JSX.Element => {
     const navigate = useNavigate();

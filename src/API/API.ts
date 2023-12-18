@@ -1,5 +1,5 @@
 import axios from 'axios';
-export async function Request(request_type, url, data = {}, headers = {}) {
+export async function Request(request_type: string, url: string, data = {}, headers = {}) {
     let config = {
         method: request_type,
         maxBodyLength: Infinity,
@@ -13,12 +13,12 @@ export async function Request(request_type, url, data = {}, headers = {}) {
         .catch((error) => error);
 }
 
-export function Get(url, data = {}, headers = {}) {
+export function Get(url: string, data = {}, headers = {}) {
     let uri = `${import.meta.env.VITE_SERVER_URL}${url}`;
     return Request('get', uri, data, headers);
 }
 
-export function Post(url, data = {}, headers = {}) {
+export function Post(url: string, data = {}, headers = {}) {
     let uri = `${import.meta.env.VITE_SERVER_URL}${url}`;
     return Request('post', uri, data, headers);
 }
