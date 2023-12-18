@@ -11,6 +11,8 @@ const FaceCam: React.FC = () => {
   const loadModels = async () => {
     const MODEL_URL = '/models';
     await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
+    await faceapi.nets.tinyYolov2.loadFromUri(MODEL_URL);
+
   };
   const handleWebcamStream = async () => {
     if (webcamRef.current && webcamRef.current.video.readyState === 4) {
