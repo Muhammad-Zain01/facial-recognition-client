@@ -13,13 +13,21 @@ type ContextState = {
     setWebcamStarted?: (value: Boolean) => void
     setWebCamRef?: (value: any) => void
 }
+
+let byDefaultWidth = 640;
+let byDefaultHeight = 480;
+const width = window && window?.innerWidth;
+if (width < 716) {
+    byDefaultWidth = width - 76 
+}
+
 const initialState: ContextState = {
     isDetected: false,
     WebcamStarted: false,
     WebCamRef: false,
     resolution: {
-        width: 640,
-        height: 480,
+        width: byDefaultWidth,
+        height: byDefaultHeight,
     }
 }
 
@@ -30,6 +38,7 @@ const defaultValues: ContextState = {
     setWebCamRef: (value: any) => { },
     setResolution: (value: Resolution) => { }
 }
+
 export const WebCamContext = createContext(defaultValues);
 const WebcamReducer = (state, action) => {
     switch (action.type) {
