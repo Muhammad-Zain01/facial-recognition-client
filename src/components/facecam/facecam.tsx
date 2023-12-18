@@ -9,7 +9,7 @@ const FaceCam: React.FC = () => {
   const intervalId = useRef<any>(null);
   const { resolution, WebcamStarted, setIsDetected, setWebCamRef } = useWebcamContext();
   const loadModels = async () => {
-    const MODEL_URL = 'https://justadudewhohacks.github.io/face-api.js/models';
+    const MODEL_URL = '/models';
     await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
   };
   const handleWebcamStream = async () => {
@@ -45,7 +45,7 @@ const FaceCam: React.FC = () => {
   useEffect(() => {
     loadModels()
   }, []);
-  
+
   useEffect(() => {
     if (!WebcamStarted) {
       stopFaceDetection();
