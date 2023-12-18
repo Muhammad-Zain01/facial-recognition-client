@@ -10,7 +10,7 @@
 </div>
 
   <p align="center" style="text-align: justify;">
-    A simple and efficient URL shortener that allows you to create shortened versions of long URLs, making them easier to share and manage. This URL shortener (Client) is built with React.js (Vite). It provides a clean and user-friendly interface for both shortening and expanding URLs.
+This Facial Recognition App is a cutting-edge solution, combining the power of Python's OpenCV and face_recognition libraries with the versatility of Flask and React JS. It's an ideal tool for user registration and recognition, suitable for a variety of applications ranging from enhanced security systems to personalized user experiences.
   </p>
     <a href="https://github.com/muhammad-zain01/facial-recognition-client"><strong>Explore the docs »</strong></a>
     <br />
@@ -27,6 +27,21 @@
 [![Product Name Screen Shot][product-screenshot]](https://url-shortr.vercel.app/)
 [![Product Name Screen Shot][product-screenshot2]](https://url-shortr.vercel.app/)
 
+### Key Features
+#### User Registration:
+Users can effortlessly register their facial data using our intuitive interface. The app securely stores facial profiles, ensuring user privacy.
+
+#### Real-Time Facial Detection:
+Registered users are recognized quickly and accurately, thanks to the efficient facial detection algorithms.
+
+#### High Accuracy:
+The integration of OpenCV and face_recognition libraries ensures high precision in identifying faces, reducing errors significantly.
+
+#### Web-Based Interface:
+Built with Flask and React JS, the app offers a responsive and user-friendly web interface for easy interaction.
+
+#### Privacy and Security:
+We prioritize user privacy and data security, implementing robust encryption and data handling practices.
 
 ### Built With
 
@@ -59,9 +74,7 @@ This is an example of how to list things you need to use the software and how to
 3. Creating .env
    ```sh
     VITE_SERVER_URL=<BACKEND_URL>
-    VITE_DOMAIN_URL=<FRONTEND_URL>
    ```
-
 4. For Starting Server
    ```sh
    npm run dev
