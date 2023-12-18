@@ -17,7 +17,7 @@ This Facial Recognition App is a cutting-edge solution, combining the power of P
     <br />
     <a href="https://url-shortr.vercel.app/">View Demo</a>
     -
-    <a href="https://github.com/Muhammad-Zain01/facial-recognition-client/">Backend Repo</a>
+    <a href="https://github.com/Muhammad-Zain01/facial-recognition-api/">Backend Repo</a>
     <br />
     <br />
     <br />
