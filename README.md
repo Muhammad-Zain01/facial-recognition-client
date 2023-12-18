@@ -25,7 +25,6 @@ This Facial Recognition App is a cutting-edge solution, combining the power of P
 
 
 [![Product Name Screen Shot][product-screenshot]](https://url-shortr.vercel.app/)
-[![Product Name Screen Shot][product-screenshot2]](https://url-shortr.vercel.app/)
 
 ### Key Features
 #### User Registration:
@@ -109,7 +108,6 @@ Don't forget to give the project a star! Thanks again!
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: https://raw.githubusercontent.com/Muhammad-Zain01/facial-recognition-client/main/preview.png
-[product-screenshot2]: https://raw.githubusercontent.com/Muhammad-Zain01/facial-recognition-client/main/preview2.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 
 [Express.js]: https://img.shields.io/badge/express.js-f1dd1c?style=for-the-badge
