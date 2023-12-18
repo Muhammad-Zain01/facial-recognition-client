@@ -3,15 +3,13 @@ import React from "react";
 
 type ComponentProps = {
     modalOpen: boolean;
-    setModalOpen: (value: boolean) => void;
     state: number;
     percent: number;
     reset: () => void;
+    startRegister : () => void
 }
 const RegisterModal: React.FC<ComponentProps> = ({ modalOpen, reset, state, percent, startRegister }) => {
-    const onStop = () => {
-        console.log("STOP")
-    }
+
     return (
         <div>
             <Modal

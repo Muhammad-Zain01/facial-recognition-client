@@ -49,7 +49,10 @@ export const SpinWrapper = styled.div`
     height: 100%;
     align-items: center;
 `
-export const ModalContent = styled.div`
+interface ModalContentProps {
+    $hg?: string; 
+}
+export const ModalContent = styled.div<ModalContentProps>`
     margin: auto;
     height: ${props => props.$hg};
 `

@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@tensorflow-models/face-landmarks-detection": "^1.0.5",
+    "@tensorflow/tfjs": "^4.15.0",
     "antd": "^5.11.5",
     "axios": "^1.6.2",
-    "face-api.js": "^0.22.2",
+    "face-api.js": "^0.20.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1",

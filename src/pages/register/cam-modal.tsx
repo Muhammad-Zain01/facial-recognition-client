@@ -6,9 +6,9 @@ type ComponentProps = {
     isModalOpen: boolean;
     handleModalClose: () => void;
     captureImage: () => void;
-    title: string;
-    buttonText: string;
-    extra: boolean | React.ReactNode;
+    title?: string;
+    buttonText?: string;
+    extra?: boolean | React.ReactNode;
 }
 const CamModal: React.FC<ComponentProps> = ({ title = "Add Image", buttonText = "Capture", isModalOpen, handleModalClose, captureImage, extra = false }): JSX.Element => {
     const { resolution, isDetected, WebCamRef } = useWebcamContext()
