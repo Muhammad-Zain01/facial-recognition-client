@@ -6,25 +6,25 @@ type ComponentProps = {
     setModalOpen: (value: boolean) => void;
     state: number;
     percent: number;
+    reset: () => void;
 }
-const RegisterModal: React.FC<ComponentProps> = ({ modalOpen, setModalOpen, state, percent }) => {
+const RegisterModal: React.FC<ComponentProps> = ({ modalOpen, reset, state, percent, startRegister }) => {
     const onStop = () => {
         console.log("STOP")
     }
-    console.log(percent);
     return (
         <div>
             <Modal
                 open={modalOpen}
                 centered
                 width={600}
-                onCancel={() => setModalOpen(false)}
+                onCancel={reset}
                 maskClosable={false}
                 footer={
                     <>
                         {
                             state === 3 && (
-                                <Button onClick={() => setModalOpen(false)}>close</Button>
+                                <Button onClick={() => reset()}>close</Button>
                             )
                         }
                     </>
@@ -33,6 +33,14 @@ const RegisterModal: React.FC<ComponentProps> = ({ modalOpen, setModalOpen, stat
                 <div>
 
                     <div style={{ display: 'flex', padding: '30px 10px 5px 10px', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        {
+                            state == 4 && (
+                                <>
+                                    <Spin size="large" />
+                                    <p>Registering...</p>
+                                </>
+                            )
+                        }
                         {
                             state == 0 && (
                                 <>
@@ -50,7 +58,10 @@ const RegisterModal: React.FC<ComponentProps> = ({ modalOpen, setModalOpen, stat
                                         status="success"
                                         title="Uploaded Successfully"
                                         extra={
-                                            <Button type="primary">
+                                            <Button
+                                                type="primary"
+                                                onClick={startRegister}
+                                            >
                                                 Register
                                             </Button>
                                         }
