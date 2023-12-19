@@ -9,9 +9,18 @@ const FaceCam: React.FC = () => {
   const intervalId = useRef<any>(null);
   const { resolution, WebcamStarted, setIsDetected, setWebCamRef } = useWebcamContext();
   const loadModels = async () => {
-    const MODEL_URL = '/models';
-    await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
-    await faceapi.nets.tinyYolov2.loadFromUri(MODEL_URL);
+    try {
+      const MODEL_URL = '/models';
+      await Promise.all([
+        faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+        faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+        faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
+        faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL)
+      ]);
+      console.log('Models loaded successfully');
+    } catch (error) {
+      console.error('Error loading models:', error);
+    }
 
   };
   const handleWebcamStream = async () => {
@@ -27,7 +36,7 @@ const FaceCam: React.FC = () => {
       startFaceDetection(video, videoWidth, videoHeight)
     }
   };
-  const startFaceDetection = (video : any, videoWidth : number, videoHeight : number) => {
+  const startFaceDetection = (video: any, videoWidth: number, videoHeight: number) => {
     intervalId.current = setInterval(async () => {
       const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
       if (detections.length > 0) { setIsDetected(true); }
