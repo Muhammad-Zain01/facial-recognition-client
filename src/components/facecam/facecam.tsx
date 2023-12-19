@@ -4,6 +4,7 @@ import Webcam from 'react-webcam';
 import _debounce from 'lodash/debounce';
 import { useWebcamContext } from '../../hooks/useWebcam';
 
+
 const FaceCam: React.FC = () => {
   const webcamRef = useRef<any>(null);
   const canvasRef = useRef<any>(null);
@@ -14,6 +15,7 @@ const FaceCam: React.FC = () => {
   if (width < 716) {
     MainWidth = width - 76
   }
+
 
   const loadModels = async () => {
     try {
@@ -49,9 +51,13 @@ const FaceCam: React.FC = () => {
       _debounce(async function detect() {
         const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
         setIsDetected(detections.length > 0);
-        const resizedDetections = faceapi.resizeResults(detections, { width: videoWidth, height: videoHeight });
-        context.clearRect(0, 0, videoWidth, videoHeight);
-        faceapi.draw.drawDetections(context, resizedDetections);
+
+        if (canvasRef.current.width > 0 && canvasRef.current.height > 0) {
+          const resizedDetections = faceapi.resizeResults(detections, { width: videoWidth, height: videoHeight });
+          context.clearRect(0, 0, videoWidth, videoHeight);
+          faceapi.draw.drawDetections(context, resizedDetections);
+        }
+
         intervalId.current = requestAnimationFrame(detect);
       }, 1000) // Debounce time in milliseconds
     );
@@ -78,7 +84,15 @@ const FaceCam: React.FC = () => {
 
   return (
     <div style={{ margin: 'auto' }}>
-      <Webcam videoConstraints={{ width: MainWidth, height: resolution.height }} style={{ position: 'absolute' }} onLoadedMetadata={handleWebcamStream} ref={webcamRef} />
+      <Webcam
+        audio={false}
+        height={resolution.height}
+        width={MainWidth}
+        videoConstraints={{ width: MainWidth, height: resolution.height }}
+        style={{ position: 'absolute' }}
+        onLoadedMetadata={handleWebcamStream}
+        ref={webcamRef}
+      />
       <canvas style={{ position: 'absolute' }} ref={canvasRef} />
     </div>
   );
