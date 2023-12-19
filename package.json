@@ -17,6 +17,7 @@
     "antd": "^5.11.5",
     "axios": "^1.6.2",
     "face-api.js": "^0.22.2",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1",

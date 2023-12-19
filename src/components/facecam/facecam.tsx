@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import * as faceapi from 'face-api.js';
 import Webcam from 'react-webcam';
+import _debounce from 'lodash/debounce';
 import { useWebcamContext } from '../../hooks/useWebcam';
 
 const FaceCam: React.FC = () => {
@@ -8,7 +9,12 @@ const FaceCam: React.FC = () => {
   const canvasRef = useRef<any>(null);
   const intervalId = useRef<any>(null);
   const { resolution, WebcamStarted, setIsDetected, setWebCamRef } = useWebcamContext();
-  
+  let MainWidth = resolution.width;
+  const width = window && window?.innerWidth;
+  if (width < 716) {
+    MainWidth = width - 76
+  }
+
   const loadModels = async () => {
     try {
       const MODEL_URL = '/models';
@@ -36,22 +42,26 @@ const FaceCam: React.FC = () => {
       startFaceDetection(video, videoWidth, videoHeight)
     }
   };
-  const startFaceDetection = (video: any, videoWidth: number, videoHeight: number) => {
-    intervalId.current = setInterval(async () => {
-      const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
-      if (detections.length > 0) { setIsDetected(true); }
-      else { setIsDetected(false) }
-      const resizedDetections = faceapi.resizeResults(detections, { width: videoWidth, height: videoHeight });
-      canvasRef.current.getContext('2d').clearRect(0, 0, videoWidth, videoHeight);
-      faceapi.draw.drawDetections(canvasRef.current, resizedDetections);
-    }, 100);
-  };
 
+  const startFaceDetection = (video: any, videoWidth: number, videoHeight: number) => {
+    const context = canvasRef.current.getContext('2d');
+    intervalId.current = requestAnimationFrame(
+      _debounce(async function detect() {
+        const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
+        setIsDetected(detections.length > 0);
+        const resizedDetections = faceapi.resizeResults(detections, { width: videoWidth, height: videoHeight });
+        context.clearRect(0, 0, videoWidth, videoHeight);
+        faceapi.draw.drawDetections(context, resizedDetections);
+        intervalId.current = requestAnimationFrame(detect);
+      }, 1000) // Debounce time in milliseconds
+    );
+  };
   const stopFaceDetection = () => {
     if (intervalId.current) {
-      clearInterval(intervalId.current);
+      cancelAnimationFrame(intervalId.current);
     }
   };
+
 
   useEffect(() => {
     loadModels()
@@ -65,9 +75,10 @@ const FaceCam: React.FC = () => {
     }
   }, [WebcamStarted])
 
+
   return (
     <div style={{ margin: 'auto' }}>
-      <Webcam videoConstraints={resolution} style={{ position: 'absolute' }} onLoadedMetadata={handleWebcamStream} ref={webcamRef} />
+      <Webcam videoConstraints={{ width: MainWidth, height: resolution.height }} style={{ position: 'absolute' }} onLoadedMetadata={handleWebcamStream} ref={webcamRef} />
       <canvas style={{ position: 'absolute' }} ref={canvasRef} />
     </div>
   );

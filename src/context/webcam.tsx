@@ -21,21 +21,13 @@ type CominedState = {
     setResolution: (value: Resolution) => void
 }
 
-let byDefaultWidth : number = 640;
-const byDefaultHeight : number = 480;
-const width = window && window?.innerWidth;
-if (width < 716) {
-    byDefaultWidth = width - 76
-}
-
-
 const initialState: ContextState = {
     isDetected: false,
     WebcamStarted: false,
     WebCamRef: false,
     resolution: {
-        width: byDefaultWidth,
-        height: byDefaultHeight,
+        width: 640,
+        height: 480,
     }
 }
 
