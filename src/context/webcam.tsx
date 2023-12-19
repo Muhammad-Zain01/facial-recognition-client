@@ -21,12 +21,13 @@ type CominedState = {
     setResolution: (value: Resolution) => void
 }
 
-let byDefaultWidth = 640;
-let byDefaultHeight = 480;
+let byDefaultWidth : number = 640;
+const byDefaultHeight : number = 480;
 const width = window && window?.innerWidth;
 if (width < 716) {
     byDefaultWidth = width - 76
 }
+
 
 const initialState: ContextState = {
     isDetected: false,

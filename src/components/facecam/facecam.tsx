@@ -8,6 +8,7 @@ const FaceCam: React.FC = () => {
   const canvasRef = useRef<any>(null);
   const intervalId = useRef<any>(null);
   const { resolution, WebcamStarted, setIsDetected, setWebCamRef } = useWebcamContext();
+  
   const loadModels = async () => {
     try {
       const MODEL_URL = '/models';
@@ -21,7 +22,6 @@ const FaceCam: React.FC = () => {
     } catch (error) {
       console.error('Error loading models:', error);
     }
-
   };
   const handleWebcamStream = async () => {
     if (webcamRef.current && webcamRef.current.video.readyState === 4) {
