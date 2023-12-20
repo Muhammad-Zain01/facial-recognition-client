@@ -4,7 +4,11 @@ import Webcam from 'react-webcam';
 import _debounce from 'lodash/debounce';
 import { useWebcamContext } from '../../hooks/useWebcam';
 
-
+type View = {
+  position: string;
+  width?: string;
+  height?: string
+}
 const FaceCam: React.FC = () => {
   const webcamRef = useRef<any>(null);
   const canvasRef = useRef<any>(null);
@@ -12,10 +16,18 @@ const FaceCam: React.FC = () => {
   const { resolution, WebcamStarted, setIsDetected, setWebCamRef } = useWebcamContext();
   let MainWidth = resolution.width;
   const width = window && window?.innerWidth;
+  let View: View = { position: 'absolute' };
   if (width < 716) {
     MainWidth = width - 76
   }
 
+  if (width < 400) {
+    View = {
+      ...View,
+      width: 'calc(100% - 41px)',
+      height: 'unset'
+    }
+  }
 
   const loadModels = async () => {
     try {
@@ -89,11 +101,11 @@ const FaceCam: React.FC = () => {
         height={resolution.height}
         width={MainWidth}
         videoConstraints={{ width: MainWidth, height: resolution.height }}
-        style={{ position: 'absolute' }}
+        style={View}
         onLoadedMetadata={handleWebcamStream}
         ref={webcamRef}
       />
-      <canvas style={{ position: 'absolute' }} ref={canvasRef} />
+      <canvas style={View} ref={canvasRef} />
     </div>
   );
 
